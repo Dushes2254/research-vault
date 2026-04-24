@@ -5,7 +5,7 @@
 ## Требования
 
 - **Node.js 20+**
-- **Docker Desktop** (для PostgreSQL + Redis) — [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+- **Docker Desktop** (для PostgreSQL + Redis)
 
 ## Установка и запуск
 
