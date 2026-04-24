@@ -72,6 +72,7 @@ npm run db:push
 
 ## Документация
 
+- [docs/PROJECT.md](docs/PROJECT.md) — **шпаргалка по репо** (архитектура, стек, где смотреть в коде; дата внутри файла)
 - [docs/MVP.md](docs/MVP.md) — границы MVP  
 - [docs/STACK.md](docs/STACK.md) — стек
 
