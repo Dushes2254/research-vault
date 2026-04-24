@@ -1,0 +1,29 @@
+---
+description: Как писать бэкенд в apps/api — авторизация, DTO, ошибки, Swagger, Prisma
+globs: apps/api/**/*.ts
+alwaysApply: false
+---
+
+# Бэкенд (`apps/api`)
+
+**Организация кода:** на каждую «фичу» обычно свои файлы рядом — `*.module.ts` собирает контроллер и сервис, рядом лежат `*.controller.ts`, `*.service.ts` и `*.dto.ts`, чтобы не бегать по папкам.
+
+**Про входящие данные:** тело и query лучше описывать **классами-DTO** с декораторами `class-validator` и для OpenAPI — `@ApiProperty` / `@ApiPropertyOptional`. Почему: на приложение уже вешается `ValidationPipe` с `whitelist`, `transform` и `forbidNonWhitelisted` — в DTO должны быть перечислены все поля, которые API реально принимает; иначе лишнее отрежется или вылезет ошибка валидации.
+
+**Кто сейчас вошёл:** закрытые маршруты — через `@UseGuards(JwtAuthGuard)` и `@ApiBearerAuth('JWT')`. Пользователь из токена — декоратор `@User() u: { id: string }`, дальше везде передавай `u.id` в сервис, где нужна привязка к владельцу.
+
+**Ошибки:** не придумывай «голые» коды; пользуйся встроенными исключениями Nest — `NotFoundException`, `BadRequestException`, `ConflictException` и т.д. Сообщение в исключении можно сделать понятным для фронта или логов, если это уместно.
+
+**Документация API:** на контроллерах — `@ApiTags`, `@ApiOperation` (краткое описание; в этом проекте в summary часто **русский**), при необходимости `@ApiParam`, `@ApiResponse`.
+
+**Данные в БД:** в сервисы подставляй `PrismaService`. Запросы держи явными: в `where` не забывай `userId`, где данные принадлежат пользователю.
+
+**Как обычно выглядит метод** (суть, не копипаста):
+
+```ts
+@Get(':id')
+@ApiOperation({ summary: '…' })
+getOne(@User() u: { id: string }, @Param('id') id: string) {
+  return this.svc.getOne(u.id, id);
+}
+```
