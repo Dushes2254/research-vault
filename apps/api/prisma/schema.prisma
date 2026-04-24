@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum VaultItemType {
+  link
+  note
+  file
+  snippet
+  video
+}
+
+enum ProcessingStatus {
+  none
+  queued
+  processing
+  done
+  failed
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  items        VaultItem[]
+  tags         Tag[]
+  collections  Collection[]
+}
+
+model Tag {
+  id     String   @id @default(cuid())
+  name   String
+  userId String
+  user   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items  VaultItemTag[]
+
+  @@unique([userId, name])
+  @@index([userId])
+}
+
+model Collection {
+  id        String   @id @default(cuid())
+  name      String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  items     CollectionItem[]
+
+  @@index([userId])
+}
+
+model VaultItem {
+  id                String   @id @default(cuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type              VaultItemType
+  title             String
+  body              String?  @db.Text
+  url               String?
+  fileName          String?
+  filePath          String?
+  fileMime          String?
+  fileSize          Int?
+  sourceHost        String?
+  previewImageUrl   String?
+  status            ProcessingStatus @default(none)
+  processingError   String?  @db.Text
+  extractedText     String?  @db.Text
+  aiSummary         String?  @db.Text
+  archivedAt        DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  tags              VaultItemTag[]
+  collections       CollectionItem[]
+
+  @@index([userId])
+  @@index([userId, type])
+  @@index([userId, createdAt])
+}
+
+model VaultItemTag {
+  vaultItemId String
+  tagId       String
+  item        VaultItem @relation(fields: [vaultItemId], references: [id], onDelete: Cascade)
+  tag         Tag       @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([vaultItemId, tagId])
+}
+
+model CollectionItem {
+  collectionId String
+  vaultItemId  String
+  createdAt    DateTime @default(now())
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  item         VaultItem  @relation(fields: [vaultItemId], references: [id], onDelete: Cascade)
+
+  @@id([collectionId, vaultItemId])
+  @@index([collectionId])
+  @@index([vaultItemId])
+}
