@@ -7,7 +7,7 @@
 - **Node.js 20+**
 - **Docker Desktop** (для PostgreSQL + Redis) — [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
-## Для нового разработчика (2 команды из корня репозитория)
+## Установка и запуск
 
 ```bash
 git clone <url> && cd research-vault
