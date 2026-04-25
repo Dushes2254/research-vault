@@ -98,3 +98,24 @@ pm2 restart research-api
 ```
 
 Если путь к репо на сервере другой — подставь свой вместо `/opt/research-vault/app`.
+
+### Автодеплой через GitHub Actions (main -> VPS)
+
+Workflow: `.github/workflows/deploy-timeweb.yml`.
+
+Запуск: любой `push` в `main` (включая merge PR в `main`).
+
+Нужные секреты в GitHub (`Settings` -> `Secrets and variables` -> `Actions`):
+
+- `TIMEWEB_HOST` — IP или домен VPS
+- `TIMEWEB_USER` — пользователь для SSH (обычно `root`)
+- `TIMEWEB_SSH_KEY` — приватный SSH-ключ (полное содержимое файла)
+- `TIMEWEB_PORT` — SSH-порт (обычно `22`)
+
+Что делает деплой:
+
+1. `git fetch` + `git reset --hard origin/main` в `/opt/research-vault/app`
+2. `npm ci`
+3. `npm run build`
+4. `npx prisma db push` в `apps/api`
+5. `pm2 restart research-api`
