@@ -15,6 +15,8 @@
 git clone <url> && cd research-vault
 ```
 
+Перед `npm run setup` обязательно запусти Docker Desktop (или Docker Engine), иначе скрипт остановится на шаге `docker compose up -d`.
+
 **1. Установка зависимостей, `.env`, БД, Prisma (одна команда):**
 
 ```bash
