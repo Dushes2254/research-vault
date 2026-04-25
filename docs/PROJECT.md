@@ -135,6 +135,7 @@ docker-compose  — postgres + redis локально
 | [MVP.md](./MVP.md) | Что в продукте, что нет |
 | [STACK.md](./STACK.md) | Сводная таблица стека |
 | [DEPLOY.md](./DEPLOY.md) | Куда крутить в проде |
+| [SERVER-TIMEWEB.md](./SERVER-TIMEWEB.md) | Прод на VPS: что установлено, DNS, nginx, pm2, обновления |
 
 ---
 

@@ -75,10 +75,11 @@ npm run db:push
 - [docs/PROJECT.md](docs/PROJECT.md) — **шпаргалка по репо** (архитектура, стек, где смотреть в коде; дата внутри файла)
 - [docs/MVP.md](docs/MVP.md) — границы MVP  
 - [docs/STACK.md](docs/STACK.md) — стек
+- [docs/SERVER-TIMEWEB.md](docs/SERVER-TIMEWEB.md) — **прод на VPS** (Timeweb/аналог): что на сервере, nginx, пути, обновления
 
 ## Прод-деплой (MVP)
 
-См. [docs/DEPLOY.md](docs/DEPLOY.md).
+См. [docs/DEPLOY.md](docs/DEPLOY.md) и пошаговая карта сервера: [docs/SERVER-TIMEWEB.md](docs/SERVER-TIMEWEB.md).
 
 ### Обновление кода на сервере (вручную)
 

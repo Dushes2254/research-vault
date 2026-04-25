@@ -12,6 +12,8 @@
 8. (Опционально) `docker build -f apps/api/Dockerfile .` из корня `research-vault/`.  
 9. См. пример [docs/nginx.example.conf](nginx.example.conf) для production.
 
+Пошаговая фиксация **конкретного** VPS (Timeweb, пути, pm2, DNS): [SERVER-TIMEWEB.md](SERVER-TIMEWEB.md).
+
 ## Переменные
 
 См. `apps/api/.env.example`.
