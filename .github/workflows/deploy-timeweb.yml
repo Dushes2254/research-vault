@@ -20,6 +20,7 @@ jobs:
           host: ${{ secrets.TIMEWEB_HOST }}
           username: ${{ secrets.TIMEWEB_USER }}
           key: ${{ secrets.TIMEWEB_SSH_KEY }}
+          passphrase: ${{ secrets.TIMEWEB_SSH_PASSPHRASE }}
           port: ${{ secrets.TIMEWEB_PORT }}
           script_stop: true
           script: |

@@ -110,6 +110,7 @@ Workflow: `.github/workflows/deploy-timeweb.yml`.
 - `TIMEWEB_HOST` — IP или домен VPS
 - `TIMEWEB_USER` — пользователь для SSH (обычно `root`)
 - `TIMEWEB_SSH_KEY` — приватный SSH-ключ (полное содержимое файла)
+- `TIMEWEB_SSH_PASSPHRASE` — passphrase от SSH-ключа (если ключ защищён; для ключа без passphrase можно не заполнять)
 - `TIMEWEB_PORT` — SSH-порт (обычно `22`)
 
 Что делает деплой:
