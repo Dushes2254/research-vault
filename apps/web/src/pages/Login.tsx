@@ -17,7 +17,7 @@ export function Login() {
   return (
     <div className='container' style={{ maxWidth: 520 }}>
       <div className='card stack'>
-        <h1 style={{ margin: 0 }}>Вход (тестовый)</h1>
+        <h1 style={{ margin: 0 }}>Вход</h1>
         <form
           className='stack'
           onSubmit={f.handleSubmit(async v => {

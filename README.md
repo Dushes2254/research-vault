@@ -83,22 +83,6 @@ npm run db:push
 
 См. [docs/DEPLOY.md](docs/DEPLOY.md) и пошаговая карта сервера: [docs/SERVER-TIMEWEB.md](docs/SERVER-TIMEWEB.md).
 
-### Обновление кода на сервере (вручную)
-
-> **Временно:** ручной деплой, пока не настроен CI/CD.
-
-```bash
-cd /opt/research-vault/app
-git pull
-npm ci
-npm run build
-cd apps/api && npx prisma db push && cd ../..
-# или: npx prisma migrate deploy — если в репо есть миграции
-pm2 restart research-api
-```
-
-Если путь к репо на сервере другой — подставь свой вместо `/opt/research-vault/app`.
-
 ### Автодеплой через GitHub Actions (main -> VPS)
 
 Workflow: `.github/workflows/deploy-timeweb.yml`.
