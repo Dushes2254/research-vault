@@ -116,7 +116,8 @@ Workflow: `.github/workflows/deploy-timeweb.yml`.
 Что делает деплой:
 
 1. `git fetch` + `git reset --hard origin/main` в `/opt/research-vault/app`
-2. `npm ci`
-3. `npm run build`
-4. `npx prisma db push` в `apps/api`
-5. `pm2 restart research-api`
+2. Если на VPS нет swap, workflow автоматически создаёт `/swapfile` (2GB), чтобы не падать по OOM
+3. `npm ci --no-audit --no-fund`
+4. `NODE_OPTIONS=--max-old-space-size=768 npm run build`
+5. `npx prisma db push` в `apps/api`
+6. `pm2 restart research-api`
