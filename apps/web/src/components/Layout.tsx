@@ -4,7 +4,7 @@ import { authLogout, useAuth } from '../auth/AuthContext';
 export function Layout({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   return (
-    <div>
+    <div style={{ minHeight: '100vh' }}>
       <div className="topbar">
         <div className="container row" style={{ justifyContent: 'space-between', padding: '12px 16px' }}>
           <div className="row" style={{ gap: 16 }}>

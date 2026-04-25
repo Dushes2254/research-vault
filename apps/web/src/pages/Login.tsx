@@ -15,7 +15,7 @@ export function Login() {
   const { setUser } = useAuth();
   const f = useForm<z.infer<typeof schema>>({ resolver: zodResolver(schema) });
   return (
-    <div className='container' style={{ maxWidth: 520 }}>
+    <div className='container' style={{ maxWidth: 520, minHeight: '100vh', display: 'grid', placeItems: 'center' }}>
       <div className='card stack'>
         <h1 style={{ margin: 0 }}>Вход</h1>
         <form
