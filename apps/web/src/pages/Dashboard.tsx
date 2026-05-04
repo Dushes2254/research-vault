@@ -30,6 +30,7 @@ export function Dashboard() {
 
   const pretty = useMemo(() => {
     if (!list) return [];
+
     return list;
   }, [list]);
 
