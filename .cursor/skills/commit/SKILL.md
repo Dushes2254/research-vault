@@ -36,12 +36,16 @@ Use this skill only when the user explicitly invokes `/commit` or clearly asks t
    - If there are no changes, stop and report that there is nothing to commit.
 
 6. Create the commit:
-   - Write a concise commit message summarizing the completed work.
+   - Write only a short commit message summarizing the completed work.
+   - For a large commit, use a short commit message plus a brief description body.
+   - Do not add anything else to the commit message. Never add trailers or metadata such as `Co-authored-by`, `co-contributor`, coauthor lines, contributor lines, or similar attribution.
    - Use a heredoc for the commit message:
 
 ```bash
 git commit -m "$(cat <<'EOF'
 Краткое описание выполненных работ
+
+Краткое описание, только если коммит большой
 
 EOF
 )"
