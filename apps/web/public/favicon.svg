@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Research Vault">
+  <defs>
+    <linearGradient id="bg" x1="10" x2="54" y1="8" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="page" x1="18" x2="48" y1="15" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <path d="M18 17.5c0-2 1.6-3.5 3.6-3.2 4.4.6 8.1 2 10.4 4.2 2.3-2.2 6-3.6 10.4-4.2 2-.3 3.6 1.2 3.6 3.2v27.2c0 1.7-1.2 3.1-2.9 3.4-4 .6-7.4 1.8-9.8 3.8-.8.7-2 .7-2.8 0-2.4-2-5.8-3.2-9.8-3.8-1.7-.3-2.9-1.7-2.9-3.4V17.5Z" fill="url(#page)"/>
+  <path d="M32 18.5v31" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round"/>
+  <path d="M23 24.5h5.5M23 31h5.5M23 37.5h5.5M35.5 24.5H41M35.5 31H41M35.5 37.5H41" fill="none" stroke="#1e3a8a" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="7.5" fill="#facc15" stroke="#fef3c7" stroke-width="2"/>
+  <path d="M32 28.5v7M28.5 32h7" fill="none" stroke="#713f12" stroke-width="2" stroke-linecap="round"/>
+</svg>
