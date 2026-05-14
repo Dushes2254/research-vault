@@ -21,11 +21,6 @@ export function Login() {
         <Link to="/login" className="auth-brand">
           Research Vault
         </Link>
-        <div className="auth-nav-links">
-          <a href="#collections">Коллекции</a>
-          <a href="#workflow">Процесс</a>
-          <a href="#features">Возможности</a>
-        </div>
         <Link to="/register" className="auth-nav-cta">
           Начать
         </Link>

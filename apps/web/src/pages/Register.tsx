@@ -15,37 +15,57 @@ export function Register() {
   const { setUser } = useAuth();
   const f = useForm<z.infer<typeof schema>>({ resolver: zodResolver(schema) });
   return (
-    <div className="container" style={{ maxWidth: 520 }}>
-      <div className="card stack">
-        <h1 style={{ margin: 0 }}>Регистрация</h1>
-        <form
-          className="stack"
-          onSubmit={f.handleSubmit(async (v) => {
-            const r = (await apiFetch('/auth/register', {
-              method: 'POST',
-              body: JSON.stringify(v),
-            })) as { accessToken: string; user: { id: string; email: string } };
-            setToken(r.accessToken);
-            setUser(r.user);
-            nav('/');
-          })}
-        >
-          <div className="stack">
-            <label className="muted">Email</label>
-            <input type="email" autoComplete="email" {...f.register('email')} />
-          </div>
-          <div className="stack">
-            <label className="muted">Пароль (мин. 8 символов)</label>
-            <input type="password" autoComplete="new-password" {...f.register('password')} />
-          </div>
-          <div className="row">
-            <button className="primary" type="submit" disabled={f.formState.isSubmitting}>
-              {f.formState.isSubmitting ? '…' : 'Создать'}
-            </button>
-            <Link to="/login">Уже есть аккаунт</Link>
-          </div>
-        </form>
-      </div>
-    </div>
+    <main className="auth-hero">
+      <nav className="auth-nav container" aria-label="Основная навигация">
+        <Link to="/login" className="auth-brand">
+          Research Vault
+        </Link>
+        <Link to="/login" className="auth-nav-cta">
+          Войти
+        </Link>
+      </nav>
+
+      <section className="auth-hero-content container auth-register-content">
+        <div className="auth-copy">
+          <p className="auth-eyebrow">Личный исследовательский архив</p>
+          <h1>Создайте пространство для материалов</h1>
+          <p>Заведите аккаунт, чтобы собирать ссылки, заметки и коллекции в одном спокойном месте.</p>
+        </div>
+
+        <div className="auth-console auth-register-card">
+          <div className="auth-console-bar">Research Vault / Регистрация</div>
+          <form
+            className="auth-form"
+            onSubmit={f.handleSubmit(async (v) => {
+              const r = (await apiFetch('/auth/register', {
+                method: 'POST',
+                body: JSON.stringify(v),
+              })) as { accessToken: string; user: { id: string; email: string } };
+              setToken(r.accessToken);
+              setUser(r.user);
+              nav('/');
+            })}
+          >
+            <div className="auth-prompt">
+              <span>Создайте аккаунт, чтобы начать работать с материалами.</span>
+            </div>
+            <label>
+              <span>Email</span>
+              <input type="email" autoComplete="email" {...f.register('email')} />
+            </label>
+            <label>
+              <span>Пароль (мин. 8 символов)</span>
+              <input type="password" autoComplete="new-password" {...f.register('password')} />
+            </label>
+            <div className="auth-form-footer">
+              <Link to="/login">Уже есть аккаунт</Link>
+              <button className="primary" type="submit" disabled={f.formState.isSubmitting}>
+                {f.formState.isSubmitting ? '…' : 'Создать'}
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
   );
 }
