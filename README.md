@@ -2,8 +2,6 @@
 
 Личный knowledge hub: ссылки, заметки, файлы, теги, коллекции, фоновая обработка ссылок, опционально AI (OpenAI).
 
-Сайт: [https://research-vault.ru/](https://research-vault.ru/)
-
 ## Требования
 
 - **Node.js 20+**
